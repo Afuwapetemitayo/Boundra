@@ -4,8 +4,8 @@ import axios from 'axios'
 import {
   Plus, FolderOpen, Shield, LogOut, X, ChevronRight,
   FileText, LayoutDashboard, Settings, Bell, AlertTriangle,
-  CheckCircle, TrendingUp, User, Lock, Palette, BellRing, Menu
-} from 'lucide-react'
+  CheckCircle, TrendingUp, User, Lock, Palette, BellRing, Menu, Camera} from 'lucide-react'
+  import PricingBanner from './PricingBanner'
 
 const API = 'http://localhost:5000/api'
 
@@ -74,10 +74,68 @@ export default function Dashboard() {
     setSidebarOpen(false)
   }
 
+  const [profileImage, setProfileImage] = useState(null)
+const [profileSaved, setProfileSaved] = useState(false)
+const [profileForm, setProfileForm] = useState({
+  name: user.name || '',
+  email: user.email || '',
+  profession: 'Graphic Designer',
+  whatsapp: ''
+})
+const [passwordForm, setPasswordForm] = useState({
+  current: '',
+  newPass: '',
+  confirm: ''
+})
+const [passwordMsg, setPasswordMsg] = useState(null)
+const [prefs, setPrefs] = useState([
+  { label: 'Email Notifications', desc: 'Get notified when a message is analysed', on: true },
+  { label: 'Auto-save Replies', desc: 'Automatically save suggested replies to history', on: true },
+  { label: 'Strict Scope Mode', desc: 'Flag borderline messages as outside scope', on: false },
+  { label: 'Weekly Summary', desc: 'Receive a weekly report of your scope activity', on: false },
+])
+
+const handleImageUpload = (e) => {
+  const file = e.target.files[0]
+  if (!file) return
+  const reader = new FileReader()
+  reader.onload = () => setProfileImage(reader.result)
+  reader.readAsDataURL(file)
+}
+
+const saveProfile = () => {
+  const updatedUser = { ...user, name: profileForm.name, email: profileForm.email }
+  localStorage.setItem('user', JSON.stringify(updatedUser))
+  setProfileSaved(true)
+  setTimeout(() => setProfileSaved(false), 3000)
+}
+
+const updatePassword = () => {
+  if (!passwordForm.current) {
+    setPasswordMsg({ type: 'error', text: 'Please enter your current password' })
+    return
+  }
+  if (passwordForm.newPass !== passwordForm.confirm) {
+    setPasswordMsg({ type: 'error', text: 'New passwords do not match' })
+    return
+  }
+  if (passwordForm.newPass.length < 6) {
+    setPasswordMsg({ type: 'error', text: 'Password must be at least 6 characters' })
+    return
+  }
+  setPasswordMsg({ type: 'success', text: 'Password updated successfully!' })
+  setPasswordForm({ current: '', newPass: '', confirm: '' })
+  setTimeout(() => setPasswordMsg(null), 3000)
+}
+
+const togglePref = (index) => {
+  setPrefs(prefs.map((p, i) => i === index ? {...p, on: !p.on} : p))
+}
+
   return (
     <div className="min-h-screen flex" style={{ backgroundColor: '#f8f7ff' }}>
 
-      {/* Mobile overlay */}
+
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-40 md:hidden"
@@ -322,6 +380,7 @@ export default function Dashboard() {
                         <p className="text-sm font-semibold text-gray-900">{tip.title}</p>
                         <p className="text-xs text-gray-500 mt-0.5">{tip.desc}</p>
                       </div>
+                      <PricingBanner />
                     </div>
                   ))}
                 </div>
@@ -460,38 +519,62 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* SETTINGS */}
           {activeTab === 'settings' && (
             <div className="max-w-2xl space-y-4">
 
+              {/* Profile */}
               <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
                 <div className="px-5 md:px-6 py-4 border-b border-gray-50 flex items-center gap-2">
                   <User size={15} className="text-purple-500" />
                   <h3 className="font-bold text-gray-900 text-sm">Profile Information</h3>
                 </div>
                 <div className="p-5 md:p-6">
+
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 md:w-16 h-14 md:h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shrink-0">
-                      <span className="text-white text-lg md:text-xl font-bold">{initials}</span>
+                    <div className="relative">
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
+                        {profileImage ? (
+                          <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                        ) : (
+                          <span className="text-white text-xl font-bold">{initials}</span>
+                        )}
+                      </div>
+                      <label className="absolute -bottom-1 -right-1 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-purple-700">
+                        <Camera size={12} className="text-white" />
+                        <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+                      </label>
                     </div>
                     <div>
-                      <p className="font-bold text-gray-900">{user.name}</p>
+                      <p className="font-bold text-gray-900">{profileForm.name || user.name}</p>
                       <p className="text-gray-400 text-sm">{user.email}</p>
                       <span className="text-xs bg-purple-50 text-purple-600 font-semibold px-2 py-0.5 rounded-full mt-1 inline-block">Freelancer</span>
                     </div>
                   </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                       <label className="text-xs text-gray-500 font-medium mb-1 block">Full Name</label>
-                      <input className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm" defaultValue={user.name} />
+                      <input
+                        className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm"
+                        value={profileForm.name}
+                        onChange={e => setProfileForm({...profileForm, name: e.target.value})}
+                      />
                     </div>
                     <div>
                       <label className="text-xs text-gray-500 font-medium mb-1 block">Email Address</label>
-                      <input className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm" defaultValue={user.email} />
+                      <input
+                        className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm"
+                        value={profileForm.email}
+                        onChange={e => setProfileForm({...profileForm, email: e.target.value})}
+                      />
                     </div>
                     <div>
                       <label className="text-xs text-gray-500 font-medium mb-1 block">Profession</label>
-                      <select className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm">
+                      <select
+                        className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm"
+                        value={profileForm.profession}
+                        onChange={e => setProfileForm({...profileForm, profession: e.target.value})}
+                      >
                         <option>Graphic Designer</option>
                         <option>Web Developer</option>
                         <option>UI/UX Designer</option>
@@ -502,15 +585,30 @@ export default function Dashboard() {
                     </div>
                     <div>
                       <label className="text-xs text-gray-500 font-medium mb-1 block">WhatsApp Number</label>
-                      <input className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm" placeholder="+234 800 000 0000" />
+                      <input
+                        className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-gray-900 text-sm"
+                        placeholder="+234 800 000 0000"
+                        value={profileForm.whatsapp}
+                        onChange={e => setProfileForm({...profileForm, whatsapp: e.target.value})}
+                      />
                     </div>
                   </div>
-                  <button className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold">
+
+                  {profileSaved && (
+                    <div className="bg-green-50 text-green-600 text-sm px-4 py-2 rounded-xl mb-3 border border-green-100">
+                      Profile saved successfully!
+                    </div>
+                  )}
+
+                  <button
+                    onClick={saveProfile}
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold"
+                  >
                     Save Changes
                   </button>
                 </div>
               </div>
-
+            
               <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
                 <div className="px-5 md:px-6 py-4 border-b border-gray-50 flex items-center gap-2">
                   <Lock size={15} className="text-purple-500" />
@@ -519,17 +617,49 @@ export default function Dashboard() {
                 <div className="p-5 md:p-6 space-y-4">
                   <div>
                     <label className="text-xs text-gray-500 font-medium mb-1 block">Current Password</label>
-                    <input type="password" className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-sm" placeholder="••••••••" />
+                    <input
+                      type="password"
+                      className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-sm"
+                      placeholder="••••••••"
+                      value={passwordForm.current}
+                      onChange={e => setPasswordForm({...passwordForm, current: e.target.value})}
+                    />
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 font-medium mb-1 block">New Password</label>
-                    <input type="password" className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-sm" placeholder="••••••••" />
+                    <input
+                      type="password"
+                      className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-sm"
+                      placeholder="••••••••"
+                      value={passwordForm.newPass}
+                      onChange={e => setPasswordForm({...passwordForm, newPass: e.target.value})}
+                    />
                   </div>
                   <div>
                     <label className="text-xs text-gray-500 font-medium mb-1 block">Confirm New Password</label>
-                    <input type="password" className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-sm" placeholder="••••••••" />
+                    <input
+                      type="password"
+                      className="w-full border border-gray-200 p-3 rounded-xl outline-none focus:border-purple-300 text-sm"
+                      placeholder="••••••••"
+                      value={passwordForm.confirm}
+                      onChange={e => setPasswordForm({...passwordForm, confirm: e.target.value})}
+                    />
                   </div>
-                  <button className="bg-gray-900 hover:bg-gray-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold">
+
+                  {passwordMsg && (
+                    <div className={'text-sm px-4 py-2 rounded-xl border ' +
+                      (passwordMsg.type === 'error'
+                        ? 'bg-red-50 text-red-600 border-red-100'
+                        : 'bg-green-50 text-green-600 border-green-100')}
+                    >
+                      {passwordMsg.text}
+                    </div>
+                  )}
+
+                  <button
+                    onClick={updatePassword}
+                    className="bg-gray-900 hover:bg-gray-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold"
+                  >
                     Update Password
                   </button>
                 </div>
@@ -541,20 +671,18 @@ export default function Dashboard() {
                   <h3 className="font-bold text-gray-900 text-sm">Preferences</h3>
                 </div>
                 <div className="p-5 md:p-6 space-y-4">
-                  {[
-                    { label: 'Email Notifications', desc: 'Get notified when a message is analysed', on: true },
-                    { label: 'Auto-save Replies', desc: 'Automatically save suggested replies to history', on: true },
-                    { label: 'Strict Scope Mode', desc: 'Flag borderline messages as outside scope', on: false },
-                    { label: 'Weekly Summary', desc: 'Receive a weekly report of your scope activity', on: false },
-                  ].map((pref, i) => (
-                    <div key={i} className={'flex justify-between items-center py-3 ' + (i < 3 ? 'border-b border-gray-50' : '')}>
+                  {prefs.map((pref, i) => (
+                    <div key={i} className={'flex justify-between items-center py-3 ' + (i < prefs.length - 1 ? 'border-b border-gray-50' : '')}>
                       <div className="flex-1 pr-4">
                         <p className="text-sm font-semibold text-gray-900">{pref.label}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{pref.desc}</p>
                       </div>
-                      <div className={'w-10 h-6 rounded-full relative cursor-pointer transition-colors shrink-0 ' + (pref.on ? 'bg-purple-600' : 'bg-gray-200')}>
-                        <div className={'w-4 h-4 bg-white rounded-full absolute top-1 transition-all ' + (pref.on ? 'right-1' : 'left-1')}></div>
-                      </div>
+                      <button
+                        onClick={() => togglePref(i)}
+                        className={'w-10 h-6 rounded-full relative transition-colors duration-200 shrink-0 ' + (pref.on ? 'bg-purple-600' : 'bg-gray-200')}
+                      >
+                        <div className={'w-4 h-4 bg-white rounded-full absolute top-1 transition-all duration-200 ' + (pref.on ? 'right-1' : 'left-1')}></div>
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -574,6 +702,7 @@ export default function Dashboard() {
 
             </div>
           )}
+
 
         </div>
       </div>
