@@ -107,7 +107,7 @@ export default function ProjectDetail() {
         </div>
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-purple-600 rounded-md flex items-center justify-center">
-            <span className="text-white text-xs font-bold">S</span>
+            <span className="text-white text-xs font-bold">B</span>
           </div>
           <span className="font-bold text-gray-900 text-sm">Boundra</span>
         </div>

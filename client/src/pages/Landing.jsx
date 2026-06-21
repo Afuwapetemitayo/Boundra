@@ -427,10 +427,10 @@ export default function Landing() {
           <div className="absolute top-0 left-1/4 w-48 h-48 rounded-full blur-3xl opacity-20" style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }}></div>
           <div className="absolute bottom-0 right-1/4 w-48 h-48 rounded-full blur-3xl opacity-15" style={{ background: 'radial-gradient(circle, #3b82f6, transparent)' }}></div>
           <div className="relative z-10 reveal">
-            <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 text-white/60 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+            {/* <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 text-white/60 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
               <Zap size={12} className="text-purple-400" />
               Ready to protect your scope?
-            </div>
+            </div> */}
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
               Stop Losing Money to <span className="text-purple-400">Scope Creep.</span>
             </h2>
@@ -460,7 +460,6 @@ export default function Landing() {
         </div>
         <p className="text-gray-300 text-xs">AI-powered scope protection for freelancers · © 2026 Boundra</p>
       </footer>
-
     </div>
   )
 }
