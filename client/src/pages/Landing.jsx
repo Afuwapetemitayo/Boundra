@@ -411,7 +411,7 @@ export default function Landing() {
                 ))}
               </div>
               <div className="mt-6">
-                <p className="text-gray-400 text-sm">Still have questions? <span className="text-purple-600 font-semibold cursor-pointer hover:text-purple-800">Contact us</span></p>
+              <p className="text-gray-400 text-sm">Still have questions? <span onClick={() => navigate('/contact')} className="text-purple-600 font-semibold cursor-pointer hover:text-purple-800">Contact us</span></p>
               </div>
             </div>
 
@@ -451,14 +451,15 @@ export default function Landing() {
           </div>
           <span className="font-bold text-gray-900 text-sm">Boundra</span>
         </div>
-        <div className="flex items-center gap-6">
+        {/* <div className="flex items-center gap-6">
           <span onClick={() => scrollTo('how-it-works')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">How it works</span>
           <span onClick={() => scrollTo('why')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Why Boundra</span>
           <span onClick={() => scrollTo('pricing')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Pricing</span>
           <span onClick={() => scrollTo('faq')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">FAQ</span>
           <span onClick={() => navigate('/login')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Login</span>
-        </div>
-        <p className="text-gray-300 text-xs">AI-powered scope protection for freelancers · © 2026 Boundra</p>
+        </div> */}
+        <p className="text-gray-400 text-xs">AI-powered scope protection for freelancers · </p>
+        <p className="text-gray-400 text-xs">© 2026 Boundra</p>
       </footer>
     </div>
   )

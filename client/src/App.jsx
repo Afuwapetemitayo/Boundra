@@ -5,6 +5,7 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import ProjectDetail from './pages/ProjectDetail'
 import Pricing from './pages/Pricing'
+import Contact  from './pages/Contact'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/project/:id" element={<ProjectDetail />} />
       <Route path="/pricing" element={<Pricing standalone={true} />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   )
 }
