@@ -100,113 +100,98 @@ export default function Landing() {
           </div>
         )}
 
-{/* ========== LIGHT HERO ========== */}
-<div className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #f3e8ff 0%, #ede9fe 20%, #e0e7ff 45%, #dbeafe 70%, #f0fdf4 100%)' }}>
+        {/* Hero content */}
+        <div className="relative z-10 flex-1 flex items-center">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 w-full">
+            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
-  {/* Blob decorations */}
-  <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #c4b5fd, transparent)' }}></div>
-  <div className="absolute top-20 right-0 w-80 h-80 rounded-full blur-3xl opacity-25" style={{ background: 'radial-gradient(circle, #bfdbfe, transparent)' }}></div>
-  <div className="absolute bottom-0 left-1/3 w-64 h-64 rounded-full blur-2xl opacity-20" style={{ background: 'radial-gradient(circle, #bbf7d0, transparent)' }}></div>
+              {/* Left */}
+              <div className="flex-1 min-w-0 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-purple-300 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+                  <span className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></span>
+                  AI-powered scope protection for freelancers
+                </div>
+                <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5 tracking-tight">
+                  Stop Losing Money<br />
+                  <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #a78bfa, #60a5fa, #34d399)' }}>
+                    to Scope Creep.
+                  </span>
+                </h1>
+                <p className="text-base md:text-lg text-white/60 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                  Upload your Statement of Work, paste any client message, and get an instant AI verdict with a professional reply — in seconds.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 mb-8">
+                  <button onClick={() => navigate('/signup')} className="w-full sm:w-auto bg-white hover:bg-gray-100 text-gray-900 px-7 py-3.5 rounded-full text-sm font-bold shadow-lg transition-all">
+                    Get started free →
+                  </button>
+                  <button onClick={() => scrollTo('how-it-works')} className="w-full sm:w-auto text-sm text-white/60 hover:text-white font-medium border border-white/20 bg-white/5 px-5 py-3.5 rounded-full transition-all">
+                    See how it works ↓
+                  </button>
+                </div>
+                {/* <p className="text-white/30 text-xs">No credit card required. Free plan includes 10 scope checks/month.</p> */}
+              </div>
 
-  {/* Grid overlay */}
-  <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
-
-  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 w-full">
-    <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-
-      {/* Left */}
-      <div className="flex-1 min-w-0 text-center md:text-left">
-        <div className="inline-flex items-center gap-2 border border-purple-200 bg-white/70 backdrop-blur-sm text-purple-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-          <span className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></span>
-          AI-powered scope protection for freelancers
-        </div>
-
-        <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-5 tracking-tight">
-          Stop Losing Money<br />
-          <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #7c3aed, #6366f1, #3b82f6)' }}>
-            to Scope Creep.
-          </span>
-        </h1>
-
-        <p className="text-base md:text-lg text-gray-500 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-          Upload your Statement of Work, paste any client message, and get an instant AI verdict with a professional reply — in seconds.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 mb-8">
-          <button
-            onClick={() => navigate('/signup')}
-            className="w-full sm:w-auto bg-gray-900 hover:bg-gray-700 text-white px-7 py-3.5 rounded-full text-sm font-bold shadow-lg transition-all"
-          >
-            Get started free →
-          </button>
-          <button
-            onClick={() => scrollTo('how-it-works')}
-            className="w-full sm:w-auto text-sm text-gray-600 hover:text-gray-900 font-medium border border-gray-200 bg-white/60 backdrop-blur-sm px-5 py-3.5 rounded-full transition-all"
-          >
-            See how it works ↓
-          </button>
-        </div>
-
-        <p className="text-gray-400 text-xs">No credit card required. Free plan includes 10 scope checks/month.</p>
-      </div>
-
-      {/* Right card — light version */}
-      <div className="flex-1 min-w-0 w-full">
-        <div className="rounded-3xl p-px shadow-2xl shadow-purple-200/50" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(99,102,241,0.15), rgba(59,130,246,0.1))' }}>
-          <div className="bg-white rounded-3xl p-5 md:p-6 border border-purple-50">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-              <span className="ml-2 text-xs text-gray-300 font-mono">Boundrix.app — Project: Brand Identity</span>
-            </div>
-                <div className="bg-gray-50 rounded-2xl p-4 mb-3 border border-gray-100">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Mail size={12} className="text-gray-400" />
-                                <p className="text-xs text-gray-400 font-medium">Client message · WhatsApp</p>
-                              </div>
-                              <p className="text-gray-700 text-sm leading-relaxed">"Can you also redesign our Instagram highlights while you're at it? It won't take long..."</p>
-                            </div>
-
-                            <div className="bg-red-50 rounded-2xl p-4 mb-3 border border-red-100">
-                              <div className="flex items-center gap-2 mb-2">
-                                <AlertCircle size={12} className="text-red-500" />
-                                <p className="text-xs font-bold text-red-500 tracking-widest">OUTSIDE SCOPE</p>
-                              </div>
-                              <p className="text-gray-500 text-sm">Instagram highlights redesign was not included in your SOW. This is a new deliverable.</p>
-                            </div>
-
-                            <div className="bg-purple-50 rounded-2xl p-4 border border-purple-100">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Pencil size={12} className="text-purple-500" />
-                                <p className="text-xs text-purple-500 font-medium">Suggested reply</p>
-                              </div>
-                              <p className="text-gray-600 text-sm leading-relaxed">"That's a great idea — highlights aren't in our current agreement, but I can send a quick quote as an add-on."</p>
-                              <div className="mt-3 flex justify-end">
-                                <span className="text-xs text-purple-600 font-semibold bg-purple-100 border border-purple-200 px-3 py-1 rounded-full cursor-pointer flex items-center gap-1.5">
-                                  <Copy size={10} /> Copy reply
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+              {/* Right card */}
+              <div className="flex-1 min-w-0 w-full">
+                <div className="rounded-3xl p-px shadow-2xl shadow-purple-900/30" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.5), rgba(99,102,241,0.3), rgba(59,130,246,0.2))' }}>
+                  <div className="bg-gray-950 rounded-3xl p-5 md:p-6 border border-white/5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                      <span className="ml-2 text-xs text-white/20 font-mono">Boundrix.app — Project: Brand Identity</span>
+                    </div>
+                    <div className="bg-white/5 rounded-2xl p-4 mb-3 border border-white/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Mail size={12} className="text-white/30" />
+                        <p className="text-xs text-white/30 font-medium">Client message · WhatsApp</p>
                       </div>
-
+                      <p className="text-white/80 text-sm leading-relaxed">"Can you also redesign our Instagram highlights while you're at it? It won't take long..."</p>
+                    </div>
+                    <div className="bg-red-950/60 rounded-2xl p-4 mb-3 border border-red-500/20">
+                      <div className="flex items-center gap-2 mb-2">
+                        <AlertCircle size={12} className="text-red-400" />
+                        <p className="text-xs font-bold text-red-400 tracking-widest">OUTSIDE SCOPE</p>
+                      </div>
+                      <p className="text-white/50 text-sm">Instagram highlights redesign was not included in your SOW. This is a new deliverable.</p>
+                    </div>
+                    <div className="bg-purple-950/60 rounded-2xl p-4 border border-purple-500/20">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Pencil size={12} className="text-purple-400" />
+                        <p className="text-xs text-purple-400 font-medium">Suggested reply</p>
+                      </div>
+                      <p className="text-white/60 text-sm leading-relaxed">"That's a great idea — highlights aren't in our current agreement, but I can send a quick quote as an add-on."</p>
+                      <div className="mt-3 flex justify-end">
+                        <span className="text-xs text-purple-400 font-semibold bg-purple-900/40 border border-purple-500/20 px-3 py-1 rounded-full cursor-pointer flex items-center gap-1.5">
+                          <Copy size={10} /> Copy reply
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
 
-        {/* Trust bar */}
-        <div className="bg-white py-8 px-6 md:px-12 border-b border-gray-100">
-          <div className="max-w-5xl mx-auto text-center">
-            <p className="text-gray-300 text-xs font-semibold uppercase tracking-widest mb-5">Trusted by freelancers in these communities</p>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-              {['Layer Master', 'Freelance Hub NG', 'Design Circle', 'Dev Community NG', 'Creative Guild'].map(name => (
-                <span key={name} className="text-gray-300 font-bold text-sm">{name}</span>
-              ))}
             </div>
           </div>
         </div>
+
+        {/* Fade to white */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: 'linear-gradient(to bottom, transparent, white)' }}></div>
+      </div>
+
+      {/* ========== LIGHT SECTIONS ========== */}
+
+      {/* Trust bar */}
+      <div className="bg-white py-8 px-6 md:px-12 border-b border-gray-100">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-gray-300 text-xs font-semibold uppercase tracking-widest mb-5">Trusted by freelancers in these communities</p>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+            {['Layer Master', 'Freelance Hub NG', 'Design Circle', 'Dev Community NG', 'Creative Guild'].map(name => (
+              <span key={name} className="text-gray-300 font-bold text-sm">{name}</span>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Why Boundrix - left text, right visual */}
       <div id="why" className="py-16 md:py-24 px-6 md:px-12 bg-white">
