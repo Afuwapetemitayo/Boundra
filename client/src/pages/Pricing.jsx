@@ -6,7 +6,7 @@ const plans = [
     name: 'Free',
     price: '₦0',
     period: '/month',
-    description: 'Perfect for trying out Boundra',
+    description: 'Perfect for trying out Boundrix',
     icon: Shield,
     color: 'gray',
     iconBg: 'bg-gray-100',

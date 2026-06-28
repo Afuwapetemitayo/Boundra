@@ -43,6 +43,7 @@ export default function ProjectDetail() {
       fetchProject()
       alert('SOW uploaded successfully!')
     } catch (err) {
+      alert(err.message);
       alert('SOW upload failed')
     }
     setLoading(false)
@@ -109,7 +110,7 @@ export default function ProjectDetail() {
           <div className="w-6 h-6 bg-purple-600 rounded-md flex items-center justify-center">
             <span className="text-white text-xs font-bold">B</span>
           </div>
-          <span className="font-bold text-gray-900 text-sm">Boundra</span>
+          <span className="font-bold text-gray-900 text-sm">Boundrix</span>
         </div>
       </nav>
 
@@ -130,7 +131,7 @@ export default function ProjectDetail() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">Upload Statement of Work</h3>
-                <p className="text-gray-400 text-xs">Paste your SOW and Boundra will read every term</p>
+                <p className="text-gray-400 text-xs">Paste your SOW and Boundrix will read every term</p>
               </div>
             </div>
             <textarea
@@ -154,7 +155,7 @@ export default function ProjectDetail() {
             <CheckCircle size={18} className="text-purple-500 shrink-0" />
             <div>
               <p className="text-purple-700 font-semibold text-sm">SOW uploaded and parsed</p>
-              <p className="text-purple-400 text-xs">Boundra knows your agreement — paste a client message below</p>
+              <p className="text-purple-400 text-xs">Boundrix knows your agreement — paste a client message below</p>
             </div>
           </div>
         )}

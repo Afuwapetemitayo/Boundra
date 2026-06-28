@@ -4,17 +4,17 @@ import { parseSOW, analyseMessage } from '../utils/claudeClient.js'
 
 const router = express.Router()
 
-// In-memory stores (imported from projects eventually)
+
 const projects = []
 const messages = []
 
-// UPLOAD and parse SOW text
+
 router.post('/sow/:projectId', authMiddleware, async (req, res) => {
   try {
     const { sowText } = req.body
     const summary = await parseSOW(sowText)
 
-    // Update project with SOW
+
     const project = projects.find(
       p => p.id === req.params.projectId && p.userId === req.user.id
     )
@@ -30,7 +30,7 @@ router.post('/sow/:projectId', authMiddleware, async (req, res) => {
   }
 })
 
-// ANALYSE a client message
+
 router.post('/message/:projectId', authMiddleware, async (req, res) => {
   try {
     const { clientMessage } = req.body
@@ -59,7 +59,7 @@ router.post('/message/:projectId', authMiddleware, async (req, res) => {
   }
 })
 
-// GET message history for a project
+
 router.get('/history/:projectId', authMiddleware, (req, res) => {
   const projectMessages = messages.filter(
     m => m.projectId === req.params.projectId

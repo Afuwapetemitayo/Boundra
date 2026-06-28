@@ -1,16 +1,24 @@
 import express from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { sendWelcomeEmail } from '../utils/mailer.js'
 
 const router = express.Router()
 
-// Temporary in-memory store (we'll replace with Prisma later)
 const users = []
 
-// SIGNUP
 router.post('/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body
+
+    // Mail tester
+
+    // await sendWelcomeEmail(name, "temmyteegraphic@gmail.com");
+
+    // return res.status(500).json({ message: "Email sent", error: "email sent" });
+
+    // Mail test end
+
 
     const existingUser = users.find(u => u.email === email)
     if (existingUser) {
@@ -27,9 +35,16 @@ router.post('/signup', async (req, res) => {
 
     users.push(newUser)
 
+    try{
+      await sendWelcomeEmail(newUser.name, newUser.email)
+      console.log('welcome email sent to', newUser.email)
+    } catch (err) {
+      console.log('Email error:', err)
+    }
+
     const token = jwt.sign(
       { id: newUser.id, email: newUser.email },
-      process.env.JWT_SECRET || 'Boundra_secret',
+      process.env.JWT_SECRET || 'Boundrix_secret',
       { expiresIn: '7d' }
     )
 
@@ -42,7 +57,7 @@ router.post('/signup', async (req, res) => {
   }
 })
 
-// LOGIN
+
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body
@@ -59,7 +74,7 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign(
       { id: user.id, email: user.email },
-      process.env.JWT_SECRET || 'Boundra_secret',
+      process.env.JWT_SECRET || 'Boundrix_secret',
       { expiresIn: '7d' }
     )
 

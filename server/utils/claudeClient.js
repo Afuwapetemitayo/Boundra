@@ -1,7 +1,9 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import { envConfig } from '../config/env.js'
+import { GoogleAuth } from "google-auth-library";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+const genAI = new GoogleGenerativeAI(envConfig.gemini_api_key);
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' })
 
 export const parseSOW = async (sowText) => {
   const prompt = "You are a contract analyst. Extract deliverables, revisions, timeline, payment terms, and out of scope items from this SOW. Return ONLY valid JSON with keys: deliverables, revisions, timeline, paymentTerms, outOfScope. No explanation, no markdown.\n\nSOW:\n" + sowText
@@ -20,3 +22,18 @@ export const analyseMessage = async (sowSummary, clientMessage) => {
   const clean = text.replace(/json|```/g, '').trim()
   return JSON.parse(clean)
 }
+
+
+async function listModels() {
+  const auth = new GoogleAuth({
+    scopes: ["https://www.googleapis.com/auth/generative-language"],
+  });
+
+  const client = await auth.getClient();
+  const url = "https://generativelanguage.googleapis.com/v1beta/models";
+
+  const res = await client.request({ url });
+  console.log(JSON.stringify(res.data, null, 2));
+}
+
+listModels();

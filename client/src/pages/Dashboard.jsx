@@ -17,9 +17,9 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [form, setForm] = useState({ name: '', clientName: '' })
   const [notifications] = useState([
-    { id: 1, text: 'Welcome to Boundra!', sub: 'Start by creating your first project.', time: 'Just now', unread: true },
+    { id: 1, text: 'Welcome to Boundrix!', sub: 'Start by creating your first project.', time: 'Just now', unread: true },
     { id: 2, text: 'Tip: Upload your SOW early', sub: 'The earlier you upload, the more protected you are.', time: '1 min ago', unread: true },
-    { id: 3, text: 'Boundra is ready', sub: 'Your account is fully set up and ready to use.', time: '2 mins ago', unread: false },
+    { id: 3, text: 'Boundrix is ready', sub: 'Your account is fully set up and ready to use.', time: '2 mins ago', unread: false },
   ])
   const token = localStorage.getItem('token')
   const user = JSON.parse(localStorage.getItem('user') || '{}')
@@ -152,7 +152,7 @@ const togglePref = (index) => {
             <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
               <Shield size={16} className="text-white" />
             </div>
-            <span className="font-bold text-gray-900 text-lg">Boundra</span>
+            <span className="font-bold text-gray-900 text-lg">Boundrix</span>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="md:hidden text-gray-400">
             <X size={18} />
@@ -235,7 +235,7 @@ const togglePref = (index) => {
                 {activeTab === 'settings' && 'Settings'}
               </h1>
               <p className="text-gray-400 text-xs mt-0.5 hidden md:block">
-                {activeTab === 'overview' && 'Your Boundra summary'}
+                {activeTab === 'overview' && 'Your Boundrix summary'}
                 {activeTab === 'projects' && 'Manage your client agreements'}
                 {activeTab === 'notifications' && 'Stay updated on your activity'}
                 {activeTab === 'settings' && 'Manage your account and preferences'}
@@ -364,13 +364,13 @@ const togglePref = (index) => {
               <div className="bg-white rounded-2xl border border-gray-100 p-5 md:p-6">
                 <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <TrendingUp size={16} className="text-purple-500" />
-                  How to get the most from Boundra
+                  How to get the most from Boundrix
                 </h3>
                 <div className="space-y-3">
                   {[
                     { num: '1', color: 'purple', bg: 'bg-purple-50', ibg: 'bg-purple-100', text: 'text-purple-600', title: 'Create a project for every client', desc: "Keep each client's SOW and messages separate." },
                     { num: '2', color: 'blue', bg: 'bg-blue-50', ibg: 'bg-blue-100', text: 'text-blue-600', title: 'Upload your SOW before work starts', desc: "The earlier you upload, the more you're protected." },
-                    { num: '3', color: 'green', bg: 'bg-green-50', ibg: 'bg-green-100', text: 'text-green-600', title: 'Analyse every suspicious message', desc: "When in doubt, paste it in. Boundra will guide you." },
+                    { num: '3', color: 'green', bg: 'bg-green-50', ibg: 'bg-green-100', text: 'text-green-600', title: 'Analyse every suspicious message', desc: "When in doubt, paste it in. Boundrix will guide you." },
                   ].map(tip => (
                     <div key={tip.num} className={'flex items-start gap-3 p-3 rounded-xl ' + tip.bg}>
                       <div className={'w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ' + tip.ibg}>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Shield, Mail, MessageCircle, Send, CheckCircle, Phone } from 'lucide-react'
+import axios from 'axios'
 
 export default function Contact() {
   const navigate = useNavigate()
@@ -8,13 +9,16 @@ export default function Contact() {
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!form.name || !form.email || !form.message) return
     setLoading(true)
-    setTimeout(() => {
+    try{
+        await axios.post('https://localhost:5000/api/contact', form)
+        setSent(true)
+    } catch(err){
+        alert('failed to send message. Please try again.')
+    }
       setLoading(false)
-      setSent(true)
-    }, 1500)
   }
 
   return (
@@ -26,7 +30,7 @@ export default function Contact() {
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
             <Shield size={16} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-lg">Boundra</span>
+          <span className="font-bold text-gray-900 text-lg">Boundrix</span>
         </div>
         <div className="flex items-center gap-4">
           <button onClick={() => navigate('/login')} className="text-sm text-gray-500 font-medium hover:text-gray-900">Login</button>
@@ -60,7 +64,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">Email us</p>
-                  <p className="text-gray-400 text-sm mt-0.5">hello@boundra.app</p>
+                  {/* <p className="text-gray-400 text-sm mt-0.5">hello@Boundrix.app</p> */}
                   <p className="text-gray-400 text-xs mt-0.5">We reply within 24 hours</p>
                 </div>
               </div>
@@ -217,9 +221,9 @@ export default function Contact() {
           <div className="w-6 h-6 bg-purple-600 rounded-md flex items-center justify-center">
             <Shield size={12} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-sm">Boundra</span>
+          <span className="font-bold text-gray-900 text-sm">Boundrix</span>
         </div>
-        <p className="text-gray-300 text-xs">AI-powered scope protection for freelancers · © 2026 Boundra</p>
+        <p className="text-gray-300 text-xs">AI-powered scope protection for freelancers · © 2026 Boundrix</p>
       </footer>
 
     </div>

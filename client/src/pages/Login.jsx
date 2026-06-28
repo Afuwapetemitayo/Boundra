@@ -61,7 +61,7 @@ export default function Login() {
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
             <Shield size={16} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-lg">Boundra</span>
+          <span className="font-bold text-gray-900 text-lg">Boundrix</span>
         </div>
 
         {/* Desktop logo */}
@@ -69,11 +69,11 @@ export default function Login() {
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
             <Shield size={16} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-lg">Boundra</span>
+          <span className="font-bold text-gray-900 text-lg">Boundrix</span>
         </div>
 
         <div className="max-w-sm w-full mx-auto md:mx-0">
-          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-1">Log in</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-1">Log In</h1>
           <p className="text-gray-400 text-sm mb-8">Enter your details to access your account</p>
 
           {error && (

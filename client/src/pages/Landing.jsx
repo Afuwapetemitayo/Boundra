@@ -4,8 +4,8 @@ import { Mail, AlertCircle, Pencil, Copy, Menu, X, Check, Zap, Users, Shield, Ch
 import useReveal from '../hooks/useReveal'
 
 const faqs = [
-  { q: 'What is Boundra and why should I care?', a: 'Scope creep is when clients gradually ask for more work than what was originally agreed. It costs freelancers time and money — often without extra pay.' },
-  { q: 'What file formats does Boundra support for SOWs?', a: 'You can paste your SOW as plain text directly into the app. PDF and Word upload support is coming soon.' },
+  { q: 'What is Boundrix and why should I care?', a: 'Scope creep is when clients gradually ask for more work than what was originally agreed. It costs freelancers time and money — often without extra pay.' },
+  { q: 'What file formats does Boundrix support for SOWs?', a: 'You can paste your SOW as plain text directly into the app. PDF and Word upload support is coming soon.' },
   { q: 'Is my contract data safe and private?', a: 'Yes. Your SOW and client messages are encrypted and never shared with third parties or used for AI training.' },
   { q: 'How accurate is the AI at detecting out-of-scope requests?', a: 'Very accurate. The AI reads your entire SOW and cross-references every client message against it. It flags borderline cases too, not just obvious violations.' },
   { q: 'Can I cancel anytime?', a: 'Yes. Cancel anytime from your dashboard. You keep access until the end of your billing period with no penalties.' },
@@ -16,7 +16,7 @@ const plans = [
   {
     name: 'Free',
     price: '₦0',
-    description: 'Perfect for trying out Boundra',
+    description: 'Perfect for trying out Boundrix',
     icon: Shield,
     badge: null,
     buttonStyle: 'border-2 border-gray-200 text-gray-700 hover:bg-gray-50',
@@ -73,11 +73,11 @@ export default function Landing() {
             <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
               <Shield size={16} className="text-white" />
             </div>
-            <span className="font-bold text-white text-lg">Boundra</span>
+            <span className="font-bold text-white text-lg">Boundrix</span>
           </div>
           <div className="hidden md:flex items-center gap-7">
             <span onClick={() => scrollTo('how-it-works')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">How it works</span>
-            <span onClick={() => scrollTo('why')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">Why Boundra</span>
+            <span onClick={() => scrollTo('why')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">Why Boundrix</span>
             <span onClick={() => scrollTo('pricing')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">Pricing</span>
             <span onClick={() => scrollTo('faq')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">FAQ</span>
             <button onClick={() => navigate('/login')} className="text-sm text-white/70 font-medium hover:text-white transition-colors">Login</button>
@@ -92,7 +92,7 @@ export default function Landing() {
         {menuOpen && (
           <div className="md:hidden relative z-40 border-b border-white/10 px-6 py-4 flex flex-col gap-4" style={{ background: 'rgba(10,10,20,0.97)', backdropFilter: 'blur(20px)' }}>
             <span onClick={() => scrollTo('how-it-works')} className="text-sm text-white/70 font-medium cursor-pointer py-1">How it works</span>
-            <span onClick={() => scrollTo('why')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Why Boundra</span>
+            <span onClick={() => scrollTo('why')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Why Boundrix</span>
             <span onClick={() => scrollTo('pricing')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Pricing</span>
             <span onClick={() => scrollTo('faq')} className="text-sm text-white/70 font-medium cursor-pointer py-1">FAQ</span>
             <span onClick={() => navigate('/login')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Login</span>
@@ -139,7 +139,7 @@ export default function Landing() {
                       <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
                       <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                      <span className="ml-2 text-xs text-white/20 font-mono">Boundra.app — Project: Brand Identity</span>
+                      <span className="ml-2 text-xs text-white/20 font-mono">Boundrix.app — Project: Brand Identity</span>
                     </div>
                     <div className="bg-white/5 rounded-2xl p-4 mb-3 border border-white/10">
                       <div className="flex items-center gap-2 mb-2">
@@ -193,16 +193,16 @@ export default function Landing() {
         </div>
       </div>
 
-      {/* Why Boundra - left text, right visual */}
+      {/* Why Boundrix - left text, right visual */}
       <div id="why" className="py-16 md:py-24 px-6 md:px-12 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
 
             {/* Left */}
             <div className="flex-1 reveal">
-              <p className="text-purple-600 text-sm font-semibold mb-2 uppercase tracking-wider">Why Boundra</p>
+              <p className="text-purple-600 text-sm font-semibold mb-2 uppercase tracking-wider">Why Boundrix</p>
               <h2 className="text-3x1 md:text-4xl font-extrabold text-gray-900 mb-4">Your work.Your terms.</h2>
-              <p className="text-gray-500 mb-8 leading-relaxed">Most freelancers lose money to scope creep. Boundra gives you the confidence to push back — professionally.</p>
+              <p className="text-gray-500 mb-8 leading-relaxed">Most freelancers lose money to scope creep. Boundrix gives you the confidence to push back — professionally.</p>
 
               <div className="space-y-6">
                 {[
@@ -283,7 +283,7 @@ export default function Landing() {
                 icon: Upload,
                 iconBg: 'bg-purple-600',
                 title: 'Upload your SOW',
-                desc: 'Drop in your Statement of Work, contract, or project brief. Boundra parses the scope in seconds.',
+                desc: 'Drop in your Statement of Work, contract, or project brief. Boundrix parses the scope in seconds.',
                 img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=200&fit=crop',
               },
               {
@@ -381,7 +381,7 @@ export default function Landing() {
             <div className="md:w-80 shrink-0 reveal">
               <p className="text-purple-600 text-sm font-semibold mb-2 uppercase tracking-wider">FAQ</p>
               <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Common questions.</h2>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">Everything you need to know about Boundra and how it protects your freelance work.</p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">Everything you need to know about Boundrix and how it protects your freelance work.</p>
               <div className="rounded-2xl overflow-hidden h-52 bg-gray-200">
                 <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Freelancers working" className="w-full h-full object-cover" />
               </div>
@@ -449,17 +449,17 @@ export default function Landing() {
           <div className="w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center">
             <Shield size={14} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-sm">Boundra</span>
+          <span className="font-bold text-gray-900 text-sm">Boundrix</span>
         </div>
         {/* <div className="flex items-center gap-6">
           <span onClick={() => scrollTo('how-it-works')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">How it works</span>
-          <span onClick={() => scrollTo('why')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Why Boundra</span>
+          <span onClick={() => scrollTo('why')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Why Boundrix</span>
           <span onClick={() => scrollTo('pricing')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Pricing</span>
           <span onClick={() => scrollTo('faq')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">FAQ</span>
           <span onClick={() => navigate('/login')} className="text-gray-400 text-xs cursor-pointer hover:text-gray-600 transition-colors">Login</span>
         </div> */}
         <p className="text-gray-400 text-xs">AI-powered scope protection for freelancers · </p>
-        <p className="text-gray-400 text-xs">© 2026 Boundra</p>
+        <p className="text-gray-400 text-xs">© 2026 Boundrix</p>
       </footer>
     </div>
   )

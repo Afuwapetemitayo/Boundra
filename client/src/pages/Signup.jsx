@@ -35,7 +35,7 @@ export default function Signup() {
           <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <Shield size={32} className="text-white" />
           </div>
-          <h2 className="text-3xl font-extrabold text-white mb-4">Join Boundra</h2>
+          <h2 className="text-3xl font-extrabold text-white mb-4">Join Boundrix</h2>
           <p className="text-purple-200 text-lg max-w-sm">Stop losing money to scope creep. Start protecting your freelance work today.</p>
           <div className="mt-10 grid grid-cols-2 gap-3">
             {[
@@ -61,7 +61,7 @@ export default function Signup() {
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
             <Shield size={16} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-lg">Boundra</span>
+          <span className="font-bold text-gray-900 text-lg">Boundrix</span>
         </div>
 
         {/* Desktop logo */}
@@ -69,11 +69,11 @@ export default function Signup() {
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
             <Shield size={16} className="text-white" />
           </div>
-          <span className="font-bold text-gray-900 text-lg">Boundra</span>
+          <span className="font-bold text-gray-900 text-lg">Boundrix</span>
         </div>
 
         <div className="max-w-sm w-full mx-auto md:mx-0">
-          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-1">Create account</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-1">Create Account</h1>
           <p className="text-gray-400 text-sm mb-8">Start protecting your freelance work for free</p>
 
           {error && (
