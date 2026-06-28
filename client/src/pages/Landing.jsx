@@ -78,7 +78,7 @@ export default function Landing() {
           <div className="hidden md:flex items-center gap-7">
             <span onClick={() => scrollTo('how-it-works')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">How it works</span>
             <span onClick={() => scrollTo('why')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">Why Boundrix</span>
-            <span onClick={() => scrollTo('pricing')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">Pricing</span>
+            {/* <span onClick={() => scrollTo('pricing')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">Pricing</span> */}
             <span onClick={() => scrollTo('faq')} className="text-sm text-white/60 cursor-pointer hover:text-white font-medium transition-colors">FAQ</span>
             <button onClick={() => navigate('/login')} className="text-sm text-white/70 font-medium hover:text-white transition-colors">Login</button>
             <button onClick={() => navigate('/signup')} className="bg-purple-600 hover:bg-purple-500 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors">Get Started →</button>
@@ -93,7 +93,7 @@ export default function Landing() {
           <div className="md:hidden relative z-40 border-b border-white/10 px-6 py-4 flex flex-col gap-4" style={{ background: 'rgba(10,10,20,0.97)', backdropFilter: 'blur(20px)' }}>
             <span onClick={() => scrollTo('how-it-works')} className="text-sm text-white/70 font-medium cursor-pointer py-1">How it works</span>
             <span onClick={() => scrollTo('why')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Why Boundrix</span>
-            <span onClick={() => scrollTo('pricing')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Pricing</span>
+            {/* <span onClick={() => scrollTo('pricing')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Pricing</span> */}
             <span onClick={() => scrollTo('faq')} className="text-sm text-white/70 font-medium cursor-pointer py-1">FAQ</span>
             <span onClick={() => navigate('/login')} className="text-sm text-white/70 font-medium cursor-pointer py-1">Login</span>
             <button onClick={() => navigate('/signup')} className="bg-purple-600 text-white px-4 py-3 rounded-full text-sm font-semibold text-center mt-1">Get Started →</button>
@@ -320,7 +320,7 @@ export default function Landing() {
       </div>
 
       {/* Pricing */}
-      <div id="pricing" className="py-16 md:py-24 px-6 md:px-12 bg-white">
+      {/* <div id="pricing" className="py-16 md:py-24 px-6 md:px-12 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 reveal">
             <p className="text-purple-600 text-sm font-semibold mb-2 uppercase tracking-wider">Pricing</p>
@@ -370,7 +370,7 @@ export default function Landing() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* FAQ - two column */}
       <div id="faq" className="py-16 md:py-24 px-6 md:px-12" style={{ backgroundColor: '#f8f7ff' }}>
